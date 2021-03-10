@@ -1,4 +1,3 @@
-import { ApiPromise, WsProvider } from "@polkadot/api";
 import {
   isWeb3Injected,
   web3Accounts,
@@ -9,16 +8,6 @@ import {
 web3Enable("PolkaProject");
 
 class User {
-  constructor() {
-    let provider = new WsProvider("wss://polkadot.maiziqianbao.net/ws");
-
-    this.api = ApiPromise.create({provider});
-  }
-
-  async getApi() {
-    return await this.api;
-  }
-
   // 获取钱包账号
   async getAccounts() {
     if (isWeb3Injected) {
