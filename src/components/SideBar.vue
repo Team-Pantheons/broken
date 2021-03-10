@@ -241,7 +241,7 @@ nav {
   padding: 17px 24px;
 }
 .scroll-content {
-  height: calc(100% - 134px);
+  height: calc(100% - 186px);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -299,9 +299,6 @@ nav {
   right: 0;
   bottom: 0;
   padding: 12px 24px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .fixed-bottom a {
   display: inline-block;
@@ -315,13 +312,15 @@ nav {
   cursor: pointer;
 }
 .fixed-bottom img {
-  margin-left: 16px;
+  margin-right: 16px;
 }
 .dropdown {
   position: relative;
+  margin-bottom: 24px;
+  display: inline-block;
 }
 .dropdown img {
-  margin-left: 4px;
+  margin:0 0 0 4px;
 }
 .open img {
   transform: rotate(180deg);
@@ -329,8 +328,8 @@ nav {
 
 .dropdown .dropdown-menu {
   position: absolute;
-  right: 0;
   left: 0;
+  right: 0;
   bottom: 46px;
   background: #fff;
   color: #000;
@@ -339,7 +338,6 @@ nav {
   z-index: 200;
   text-align: center;
   max-width: 204px;
-  margin: 0 auto;
   font: 700 16px/1.5 Rubik-Medium;
 }
 .foot-contact a{
@@ -347,7 +345,7 @@ nav {
 }
 .foot-contact .qrcode{
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 24px;
   display: none;
   opacity: 1;
@@ -377,7 +375,7 @@ nav {
     width: 100vw;
   }
   .scroll-content {
-    height: calc(100% - 76px);
+    height: calc(100% - 130px);
     overflow: auto;
   }
   .scroll-content li {

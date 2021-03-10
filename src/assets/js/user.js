@@ -6,7 +6,7 @@ import {
   web3FromAddress,
   web3FromSource,
 } from "@polkadot/extension-dapp";
-web3Enable("mathwallet");
+web3Enable("PolkaProject");
 
 class User {
   constructor() {
