@@ -291,4 +291,7 @@ table td:nth-child(2) {
 td:nth-child(2) .td-max-width {
   width: calc(100% - 48px);
 }
+td:last-child{
+  min-width: 20px;
+}
 </style>
