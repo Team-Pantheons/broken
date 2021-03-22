@@ -149,7 +149,7 @@
                   width="80"
                 >
                   <sparklineLine
-                    :data="item.priceList"
+                    :data="getPriceList(item.priceList)"
                     :limit="item.priceList.length"
                     :styles="spLineStyles"
                     :refLineStyles="spRefLineStyles"
@@ -213,6 +213,11 @@ export default {
     }
   },
   methods: {
+    getPriceList(data){
+      // 此操作防止改变原数据造成vue渲染死循环
+      let price = JSON.parse(JSON.stringify(data))
+      return price.reverse();
+    },
     goProjectDetail(item) {
       if (item.ID) {
         this.$router.push("/project/" + item.ID);

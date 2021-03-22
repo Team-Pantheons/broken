@@ -41,6 +41,8 @@
       <input type="text" name="coingecko" placeholder="Coingecko" v-model="coingecko" autocomplete="off">
       <div class="list-name">Subsocial</div>
       <input type="text" name="subsocial" placeholder="Subsocial" v-model="subsocial" autocomplete="off">
+      <div class="list-name">Official Announcement Link of PLO Token Allocation Plan</div>
+      <input type="text" name="PLOTokenAllocationPlan" placeholder="Official Announcement Link of PLO Token Allocation Plan" v-model="PLOTokenAllocationPlan" autocomplete="off">
       <div class="list-name" v-if="parentChainList&&parentChainList.length>0">ParentChain</div>
       <select :class="{selected:parentChain}" name="pID" v-model="parentChain" v-if="parentChainList&&parentChainList.length>0">
         <option value='0' selected>None</option>
@@ -82,6 +84,7 @@ export default {
       expire: 0,
       parentChainList:null,
       subsocial:'',
+      PLOTokenAllocationPlan:''
     }
   },
   created(){
