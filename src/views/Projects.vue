@@ -6,7 +6,7 @@
         <input
           type="text"
           class="search"
-          placeholder="Search"
+          :placeholder="$t('Search')"
           v-model="searchInfo"
           @input="debouncedSearchProject"
         />
@@ -25,7 +25,7 @@
           :class="{ active: selectedTagID == tag.ID }"
           @click="switchTags(tag)"
         >
-          {{ tag.title }}
+          {{ tag.title=="All"?$t('All'):tag.title }}
         </li>
       </ul>
     </header>
@@ -71,14 +71,11 @@
       </ul>
       <!-- 无结果 -->
       <div v-else-if="searchInfo" class="noSearchResult">
-        <p>No results were found for “{{ searchInfo }}”</p>
+        <p>{{$t('NoResultsFound').replace('w%',searchInfo)}}</p>
         <br />
-        <p>Suggest:</p>
-        <p>Please make sure all words are spelled correctly.</p>
-        <p>Please try a different keyword.</p>
-        <p>Please try a broader keyword.</p>
+        <p v-html="$t('NoResultsInfo')"></p>
       </div>
-      <div class="load-all" v-if="isAllList"><span>No more</span></div>
+      <div class="load-all" v-if="isAllList"><span>{{$t('NoMore')}}</span></div>
     </div>
     <!-- go top -->
     <img
@@ -167,40 +164,27 @@ export default {
       this.getList();
     },
     getTags() {
+      this.$loading(1);
       //获取标签列表
       var URL =
         this.domain +
         "getTags" +
         (this.selectedCategory.ID ? "?cateID=" + this.selectedCategory.ID : "");
-
+      this.tags = [
+        {
+          ID: "0",
+          title: "All",
+        },
+      ];
       this.axios
         .get(URL)
         .then((res) => {
           if (res.data.success) {
-            this.tags = [
-              {
-                ID: "0",
-                title: "All",
-              },
-            ].concat(res.data.data.tags);
-          } else {
-            this.tags = [
-              {
-                ID: "0",
-                title: "All",
-              },
-            ];
-            console.log(res.data.message);
+            this.tags = this.tags.concat(res.data.data.tags);
           }
           this.getListByTag();
         })
         .catch((err) => {
-          this.tags = [
-            {
-              ID: "0",
-              title: "All",
-            },
-          ];
           this.getListByTag();
           console.log(err);
         });
@@ -239,22 +223,18 @@ export default {
         this.$loading(0);
         if (res.data.success) {
           this.projectList = res.data.data.polkas;
-
+          this.isAllList = false;
+          // 将开关关闭
+          this.sw = false;
           // 搜索框有数据
           if (this.searchInfo) {
-            // 将开关关闭
-            this.sw = false;
             if (this.projectList && this.projectList.length > 0) {
               this.isAllList = true;
-            } else {
-              this.isAllList = false;
             }
           } else {
             if (this.projectList.length < this.limit_num) {
               this.isAllList = true;
-              this.sw = false;
             } else {
-              this.isAllList = false;
               this.sw = true;
             }
           }

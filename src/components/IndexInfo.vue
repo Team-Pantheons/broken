@@ -1,11 +1,11 @@
 <template>
   <article>
     <router-link v-if="isHome" to="/index" class="float-right view-all"
-      >Details</router-link
+      >{{$t('Details')}}</router-link
     >
     <h2 class="title">
       <img src="@/assets/img/icon/ppi.png" width="32" /><span
-        >PolkaProject Index</span
+        >PolkaProject {{$t('Index')}}</span
       >
     </h2>
     <template v-if="klinePriceList&&klinePriceList.length>1">
@@ -19,7 +19,7 @@
         :dataList="klinePriceList"
       />
     </template>
-    <p v-else class="null">No Information</p>
+    <p v-else class="null"> {{$t('NoInformation')}}</p>
     <ul
       class="select-kline-type" v-if="!isHome">
       <li
@@ -28,7 +28,7 @@
         :class="{ active: selectedKline == item }"
         @click="selectKline(item)"
       >
-        {{ item }}
+        {{ $t(item.slice(1)) }}
       </li>
     </ul>
   </article>

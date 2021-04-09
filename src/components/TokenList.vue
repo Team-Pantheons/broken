@@ -1,9 +1,9 @@
 <template>
   <article>
     <router-link v-if="isHome" to="/rank" class="float-right view-all"
-      >View all</router-link
+      >{{$t('ViewAll')}}</router-link
     >
-    <h2 class="title">Rank</h2>
+    <h2 class="title">{{$t('Rank')}}</h2>
     <main class="table-responsive">
       <table v-if="rankList && rankList.length > 0">
         <thead>
@@ -13,7 +13,7 @@
               :class="[{ active: sortByWho == 'title' }]"
               @click="sortRank('title')"
             >
-              Project
+              {{$t('Project')}}
               <img
                 v-show="!isHome && title.order == 'asc'"
                 src="@/assets/img/icon/up.png"
@@ -30,7 +30,7 @@
               @click="sortRank('activity')"
             >
               <p class="flex-align-center">
-                <i>Development<br />Activity (30d)</i>
+                <i><label v-html="$t('DevelopmentActivity')"></label> (30d)</i>
                 <img
                   v-show="!isHome && activity.order == 'asc'"
                   src="@/assets/img/icon/up.png"
@@ -43,14 +43,14 @@
                 />
               </p>
             </th>
-            <th v-if="!isHome">Activity<br />Curve</th>
-            <th>Token</th>
+            <th v-if="!isHome" v-html="$t('ActivityCurve')"></th>
+            <th>{{$t('Token')}}</th>
             <th
               :class="[{ active: sortByWho == 'price' }]"
               @click="sortRank('price')"
             >
               <p class="flex-align-center">
-                <i>Price/24h<br />Change</i>
+                <i v-html="$t('PriceChange')"></i>
                 <img
                   v-show="!isHome && price.order == 'asc'"
                   src="@/assets/img/icon/up.png"
@@ -63,7 +63,7 @@
                 />
               </p>
             </th>
-            <th v-if="!isHome">Last 7 Days</th>
+            <th v-if="!isHome">{{$t('Last7Days')}}</th>
             <th
               :class="[{ active: sortByWho == 'like' }]"
               @click="sortRank('like')"
@@ -162,7 +162,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="null" v-else>No information</div>
+      <div class="null" v-else>{{$t('NoInformation')}}</div>
     </main>
     <Pagination
       :total="total"

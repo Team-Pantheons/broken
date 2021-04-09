@@ -6,7 +6,9 @@
 import * as echarts from "echarts/core";
 import {
     GridComponent,
-    TooltipComponent
+    GraphicComponent,
+    TitleComponent,
+    TooltipComponent,
 } from 'echarts/components';
 import {
     LineChart
@@ -15,7 +17,7 @@ import {
     CanvasRenderer
 } from 'echarts/renderers';
 echarts.use(
-    [GridComponent,TooltipComponent, LineChart, CanvasRenderer]
+    [GraphicComponent,TitleComponent,GridComponent,TooltipComponent, LineChart, CanvasRenderer]
 );
 export default {
   props: ["timeList", "dataList"],
@@ -38,6 +40,17 @@ export default {
 
       // k线配置
       var option = {
+        backgroundColor:"#fff",
+        graphic: {
+          type: 'text',
+          left: 20,
+          bottom: 50,
+          style: {
+              text: 'PolkaProject',
+              fill:"rgba(0,0,0,0.08)",
+              font:"900 28px/1.5 Rubik-Medium",
+          }
+        },
         color: this.mainColor,
         tooltip: {
           trigger: "axis",

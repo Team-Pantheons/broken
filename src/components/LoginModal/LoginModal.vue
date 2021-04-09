@@ -6,7 +6,7 @@
   >
     <div class="account-list" v-if="accounts && accounts.length > 0">
       <img src="@/assets/img/banner/polka.jpg" width="100%" />
-      <h4>Select Account</h4>
+      <h4>{{$t('SelectAccount')}}</h4>
       <ul>
         <li
           v-for="(account, i) in accounts"
@@ -14,7 +14,7 @@
           :class="{ active: account.isActive }"
           @click="selectAction(account)"
         >
-          {{ account.address }}
+          {{ account.address }} ({{account.meta.name}})
         </li>
       </ul>
     </div>
@@ -25,8 +25,8 @@
         class="modal-close"
         @click="loginModalShow = false"
       />
-      <h2>Log In</h2>
-      <p>Please select a wallet to login</p>
+      <h2>{{$t('Login')}}</h2>
+      <p>{{$t('SelectLoginAccount')}}</p>
       <a
         href="https://polkadot.js.org/extension/"
         target="_blank"
@@ -34,7 +34,7 @@
         class="btn bg-orange"
         @click="loginModalShow = false"
         ><img src="@/assets/img/logo/polka.png" width="24" />
-        <span>Log In with PolkadotJS Extension</span></a
+        <span>{{$t('LogInPolkadotJS')}}</span></a
       >
       <a
         href="https://mathwallet.org"
@@ -43,7 +43,7 @@
         class="btn"
         @click="loginModalShow = false"
         ><img src="@/assets/img/logo/math.png" width="24" />
-        <span>Log In with MathWallet Extension</span>
+        <span>{{$t('LogInMathWallet')}}</span>
       </a>
     </div>
   </article>

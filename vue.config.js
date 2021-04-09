@@ -8,6 +8,7 @@ module.exports = {
       extensions: ["*", ".mjs", ".js", ".vue", ".json", ".gql", ".graphql"],
       alias: {
         static: "public/static",
+        vue$: "vue/dist/vue.esm.js",
       },
     },
     module: {

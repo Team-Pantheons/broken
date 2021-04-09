@@ -1,32 +1,32 @@
 <template>
-  <section class="form-group">
+  <section class="form-group" ref="form_group">
     <router-link to="/" class="form-nav"><img src="@/assets/img/icon/logo.png" height="30"></router-link>
     <form ref="form">
-      <h4>Submit Project</h4>
-      <div class="list-name" ref='title'> Title <span>*</span></div>
-      <input type="text" name="title" placeholder="Project title" v-model="title" autocomplete="off">
-      <div class="list-name" ref="category"> Category <span>*</span></div>
+      <h4>{{$t('SubmitProject')}}</h4>
+      <div class="list-name" ref='title'> {{$t('Title')}} <span>*</span></div>
+      <input type="text" name="title" :placeholder="$t('ProjectTitle')" v-model="title" autocomplete="off">
+      <div class="list-name" ref="category"> {{$t('Category')}} <span>*</span></div>
       <select :class="{selected:cateID}" name="cateID" v-model="cateID">
-        <option value='' disabled selected>Select Category</option>
+        <option value='' disabled selected> {{$t('SelectCategory')}}</option>
         <option v-for="item in category.slice(1)" :value="item.ID" :key="item.ID">{{item.title}}</option>
       </select>
-      <div class="list-name" ref="introduction">Short Introduction <span>*</span></div>
+      <div class="list-name" ref="introduction">{{$t('ShortIntroduction')}} <span>*</span></div>
       <div class="basic-group">
-        <textarea name="introduction" placeholder="Short Introduction (Limit 256 Characters)" rows="4" v-model="introduction" @input="limitByteSize" autocomplete="off"></textarea>
+        <textarea name="introduction" :placeholder="$t('ShortIntroductionLimit')" rows="4" v-model="introduction" @input="limitByteSize" autocomplete="off"></textarea>
         <span><i :class="{warn:shortByte>256}">{{shortByte}}</i>/256</span>
       </div>
-      <div class="list-name">Detail Description</div>
-      <textarea name="description" placeholder="Detail Description" v-model="description" ref="des" @input="textareaHeight" autocomplete="off"></textarea>
+      <div class="list-name">{{$t('DetailDescription')}}</div>
+      <textarea name="description" :placeholder="$t('DetailDescription')" v-model="description" ref="des" @input="textareaHeight" autocomplete="off"></textarea>
       <!-- logo -->
       <div class="list-name">Logo (Image Size: 288*288 px)</div>
       <div class="upload-pic" id="fileContainer" :style="'backgroundImage:url('+ (img?'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/'+img:require('@/assets/img/icon/photo.png'))+')'">
         <div id="file"></div>
         <input type="hidden" name="img" v-model="img">
       </div>
-      <div class="list-name">Website</div>
-      <input type="text" name="website" placeholder="Website" v-model="website" autocomplete="off">
-      <div class="list-name">Email</div>
-      <input type="email" name="email" placeholder="Email" v-model="email" autocomplete="off">
+      <div class="list-name">{{$t('Website')}}</div>
+      <input type="text" name="website" :placeholder="$t('Website')" v-model="website" autocomplete="off">
+      <div class="list-name">{{$t('Email')}}</div>
+      <input type="email" name="email" :placeholder="$t('Email')" v-model="email" autocomplete="off">
       <div class="list-name">Twitter</div>
       <input type="text" name="twitter" placeholder="Twitter" v-model="twitter" autocomplete="off">
       <div class="list-name">Telegram</div>
@@ -41,15 +41,15 @@
       <input type="text" name="coingecko" placeholder="Coingecko" v-model="coingecko" autocomplete="off">
       <div class="list-name">Subsocial</div>
       <input type="text" name="subsocial" placeholder="Subsocial" v-model="subsocial" autocomplete="off">
-      <div class="list-name">Official Announcement Link of PLO Token Allocation Plan</div>
-      <input type="text" name="PLOTokenAllocationPlan" placeholder="Official Announcement Link of PLO Token Allocation Plan" v-model="PLOTokenAllocationPlan" autocomplete="off">
-      <div class="list-name" v-if="parentChainList&&parentChainList.length>0">ParentChain</div>
+      <div class="list-name">{{$t('PLOTokenAllocationPlan')}}</div>
+      <input type="text" name="PLOTokenAllocationPlan" :placeholder="$t('PLOTokenAllocationPlan')" v-model="PLOTokenAllocationPlan" autocomplete="off">
+      <div class="list-name" v-if="parentChainList&&parentChainList.length>0">{{$t('ParentChain')}}</div>
       <select :class="{selected:parentChain}" name="pID" v-model="parentChain" v-if="parentChainList&&parentChainList.length>0">
         <option value='0' selected>None</option>
         <option v-for="item in parentChainList" :value="item.ID" :key="item.ID">{{item.title}}</option>
       </select>
       <!-- 提交申请 -->
-      <a href="javascript:;" class="submit-btn" @click="submitProject">Submit</a>
+      <a href="javascript:;" class="submit-btn" @click="submitProject">{{$t('Submit')}}</a>
     </form>
   </section>
 </template>
@@ -89,6 +89,7 @@ export default {
   },
   created(){
     this.getParentChainList();
+    this.$loading(0);
   },
   mounted(){
     // 上传图片
@@ -120,23 +121,23 @@ export default {
     },
     validate() {
       if (!this.title.trim()) {
-        this.$toast('Please fill in the title');
-        window.scrollTo(0, this.$refs.title.offsetTop - 74);
+        this.$toast(this.$t('EnterTitle'));
+        this.$refs.form_group.scrollTo(0, this.$refs.title.offsetTop - 74);
         return false;
       }
       if (!this.cateID) {
-        this.$toast('Please select a category');
-        window.scrollTo(0, this.$refs.category.offsetTop - 74);
+        this.$toast(this.$t('EnterCategory'));
+        this.$refs.form_group.scrollTo(0, this.$refs.category.offsetTop - 74);
         return false;
       }
       if (!this.introduction.trim()) {
-        this.$toast('Please fill in the short introduction');
-        window.scrollTo(0, this.$refs.introduction.offsetTop - 74);
+        this.$toast(this.$t('EnterShortIntroduction'));
+        this.$refs.form_group.scrollTo(0, this.$refs.introduction.offsetTop - 74);
         return false;
       }
       if (!this.limitByteSize()) {
-        this.$toast('Introduction is limited to 256 characters');
-        window.scrollTo(0, this.$refs.introduction.offsetTop - 74);
+        this.$toast(this.$t('EnterIntroductionLimited'));
+        this.$refs.form_group.scrollTo(0, this.$refs.introduction.offsetTop - 74);
         return false;
       }
       return true;
@@ -164,18 +165,22 @@ export default {
         }
       } catch (e) {}
 
+      this.$loading(1);
+
       this.axios.post(this.domain+"submitPolkaProject",formData).then(res=>{
         if (res.data.success) {
-          this.$toast('Submit Success');
+          this.$toast(this.$t('SubmitSuccess'));
           this.$router.push('/');
         } else {
           this.$toast(res.data.message,3000);
           this.lock = false;
         }
+        this.$loading(0);
       }).catch(err=>{
         console.log(err);
-        this.$toast('ERROR');
+        this.$toast(this.$t('ERROR'));
         this.lock = false;
+        this.$loading(0);
       })
     },
     send_request() {
@@ -219,7 +224,6 @@ export default {
       }
       this.g_object_name = this.key;
       if (filename != '') {
-        // suffix = this.get_suffix(filename)
         this.calculate_object_name(filename)
       }
       let new_multipart_params = {

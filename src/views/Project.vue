@@ -1,6 +1,6 @@
 <template>
   <section class="project-detail container" v-if="project">
-    <p class="close" @click="goBackPath">Back</p>
+    <p class="close" @click="goBackPath">{{$t('Back')}}</p>
     <main class="clearfix">
       <article class="float-left">
         <div class="basic-info clearfix">
@@ -41,7 +41,7 @@
             <h2>👍</h2>
             <div>
               <p>{{voters?voters.length:'--'}}</p>
-              <span>Voters</span>
+              <span>{{$t('Voters')}}</span>
             </div>
           </div>
         </div>
@@ -77,14 +77,14 @@
               :class="{ active: selectedKline.name == item.name }"
               @click="selectKline(item)"
             >
-              {{ item.name }}
+              {{ $t(item.name.slice(1)) }}
             </li>
           </ul>
         </div>
         <!-- 开发活跃度 -->
         <div class="dev-active flex-between" v-if="project.activity">
           <div class="left-part">
-            <h5>Development Activity</h5>
+            <h5 v-html="$t('DevelopmentActivity').replace('<br>','')"></h5>
             <ul>
               <li>
                 <h2>
@@ -92,11 +92,11 @@
                   <span v-if="project.activity.commit30dChange<0" class="color-down">{{(project.activity.commit30dChange*100).toFixed(2)}}%</span>
                   <span v-else class="color-up">+{{(project.activity.commit30dChange*100).toFixed(2)}}%</span>
                 </h2>
-                <p>event (30d)</p>
+                <p>{{$t('event')}} (30d)</p>
               </li>
               <li>
                 <h2>{{webUtil.addCommas(project.activity.commit90d)}}</h2>
-                <p>event (90d)</p>
+                <p>{{$t('event')}} (90d)</p>
               </li>
             </ul>
           </div>
@@ -111,7 +111,7 @@
           </sparkline>
         </div>
         <div class="about" v-if="project.description">
-          <h2>About {{ project.title }}</h2>
+          <h2>{{$t('About')}} {{ project.title }}</h2>
           <div
             class="dapp-slogan"
             v-html="webUtil.getFormatCode(project.description)"
@@ -126,7 +126,7 @@
             v-if="project.website"
             @click.stop="openLink(project.website)"
           >
-            Visit Website
+            {{$t("VisitWebsite")}}
           </p>
           <ul>
             <li
@@ -138,7 +138,7 @@
               <span style="text-transform: capitalize">{{ item }}</span>
             </li>
           </ul>
-          <button class="share-btn" @click="copyAction()">Share</button>
+          <button class="share-btn" @click="copyAction()">{{$t('Share')}}</button>
         </div>
         <!--ParentChain && SubProjects -->
         <ul class="chain-list">
@@ -148,7 +148,7 @@
               project.parentChain && Object.keys(project.parentChain).length > 0
             "
           >
-            <h2>ParentChain</h2>
+            <h2>{{$t('ParentChain')}}</h2>
             <div
               @click="getDetailByID(project.parentChain.ID)"
               class="chain-info"
@@ -177,7 +177,7 @@
             class="border-top"
             v-if="project.subProjects && project.subProjects.length > 0"
           >
-            <h2>SubProjects</h2>
+            <h2>{{$t('SubProjects')}}</h2>
             <div
               v-for="item in project.subProjects"
               :key="item.ID"
@@ -207,9 +207,10 @@
         </ul>
         <!-- voters -->
         <div class="border-top" v-if="voters&&voters.length>0">
-          <h2>{{voters.length}} Voters</h2>
+          <h2>{{voters.length}} {{$t('Voters')}}</h2>
           <p class="voters-list">
-            <a v-for="(address,i) in voters" :key="i" target="_blank" rel="noopener noreferrer" :href="'https://polkadot.subscan.io/account/'+address">{{webUtil.formatStrByDot(address,8,8)}}</a>
+            <a v-for="(address,i) in voterList" :key="i" target="_blank" rel="noopener noreferrer" :href="'https://polkadot.subscan.io/account/'+address">{{webUtil.formatStrByDot(address,8,8)}}</a>
+            <a v-if="voters.length>10" href="javascript:;" @click="isFold=!isFold">{{isFold?$t('GetMore'):$t('Fold')}}</a>
           </p>
         </div>
       </article>
@@ -223,18 +224,18 @@
           target="_blank"
           novalidate
         >
-          <h2>Subscribe to Updates</h2>
+          <h2>{{$t('SubscribeToUpdates')}}</h2>
           <div class="basic-group">
             <input
               type="email"
               name="EMAIL"
-              placeholder="Your email"
+              :placeholder="$t('YourEmail')"
               class="email"
               autocomplete="off"
             />
             <input
               type="submit"
-              value="Subscribe"
+              :value="$t('Subscribe')"
               name="subscribe"
               class="button"
             />
@@ -245,12 +246,10 @@
             'mailto:polkaprojectcom@gmail.com?subject=Update-' + project.title
           "
           class="update-project"
-          >Submit an update on this project</a
+          >{{$t('SubmitThisProject')}}</a
         >
         <p class="color-grey tip">
-          All info in this site is purely educational and should only be used to
-          inform your own research. We're not offering investment advice,
-          endorsement of any project or approach, or promise of any outcome.
+          {{$t('projectAboutInfo')}}
         </p>
       </article>
     </main>
@@ -288,8 +287,14 @@ export default {
       },
       USDRmbPrice:'6.48',
       voters:null,
+      isFold:true,
       message:'Like this project'
     };
+  },
+  computed:{
+    voterList(){
+      return this.voters&&this.voters.length>0&&this.isFold?this.voters.slice(0,10):this.voters
+    }
   },
   created() {
     this.getProjectInfo();
@@ -338,7 +343,7 @@ export default {
     getVoters(){
       this.axios.get(this.domain+'getPolkaLikeVoters?id='+this.id).then(res=>{
         if(res.data.success){
-          this.voters = res.data.data;
+          this.voters = res.data.data&&res.data.data.length>0?res.data.data.reverse():[];
           this.isLiked = this.voters&&this.account?this.voters.includes(this.account.address):false;
         }else{
           this.voters = null;

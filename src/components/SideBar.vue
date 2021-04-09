@@ -12,7 +12,7 @@
         />
       </div>
       <span>{{
-        selectedTab.includes("Project") ? selectedCategory.title : selectedTab
+        selectedTab.includes("Project") ? (selectedCategory.title== "All" ? $t("All") :selectedCategory.title) : $t(selectedTab)
       }}</span>
     </nav>
     <article class="sidebar" v-show="isSideShow">
@@ -26,27 +26,27 @@
             @click="goRoute('Home')"
           >
             <img src="@/assets/img/sidebar/Home.png" width="24" />
-            <span>Home</span>
+            <span>{{ $t("Home") }}</span>
           </li>
           <li
             :class="{ active: selectedTab == 'Index' && !isMobile }"
             @click="goRoute('Index')"
           >
             <img src="@/assets/img/sidebar/Index.png" width="24" />
-            <span>Index</span>
+            <span>{{ $t("Index") }}</span>
           </li>
           <li
             :class="{ active: selectedTab == 'Rank' && !isMobile }"
             @click="goRoute('Rank')"
           >
             <img src="@/assets/img/sidebar/Rank.png" width="24" />
-            <span>Rank</span>
+            <span>{{ $t("Rank") }}</span>
           </li>
         </ul>
         <div class="flex-between category-title">
-          <p>Project</p>
+          <p>{{ $t("Project") }}</p>
           <router-link to="/submit" class="submit"
-            >+ Submit Project</router-link
+            >+ {{ $t("SubmitProject") }}</router-link
           >
         </div>
         <ul class="blockchain">
@@ -61,14 +61,15 @@
                 selectedTab.includes('Project'),
             }"
           >
-            {{ item.title }} <span>{{ item.count }}</span>
+            {{ item.title == "All" ? $t("All") : item.title }}
+            <span>{{ item.count }}</span>
           </li>
         </ul>
       </div>
       <div class="fixed-bottom">
         <div class="dropdown">
           <button v-if="!account" class="border-btn" @click="login">
-            Login
+            {{ $t("Login") }}
           </button>
           <a
             v-else
@@ -84,25 +85,43 @@
             v-show="accountDropdownShow"
             @click="logoutAction"
           >
-            Logout
+            {{ $t("Logout") }}
           </a>
         </div>
 
-        <p class="foot-contact">
-          <a href="https://t.me/polkaprojectcom" target="_blank"
-            ><img src="@/assets/img/icon/telegram.png" width="20"
-          /></a>
-          <a href="https://twitter.com/polkaprojectcom" target="_blank"
-            ><img src="@/assets/img/icon/twitter.png" width="20"
-          /></a>
-          <a href="javascript:;">
-            <img src="@/assets/img/icon/wechat.png" width="20"/>
-            <img class="qrcode" src="@/assets/img/sidebar/weixin.jpg" width="140"/>
-          </a>
-          <a href="https://github.com/PolkaProject/PolkaProject-frontend" target="_blank"
-            ><img src="@/assets/img/icon/github.png" width="20"
-          /></a>
-        </p>
+        <div class="foot-contact flex-between">
+          <p>
+            <a href="https://t.me/polkaprojectcom" target="_blank"
+              ><img src="@/assets/img/icon/telegram.png" width="20"
+            /></a>
+            <a href="https://twitter.com/polkaprojectcom" target="_blank"
+              ><img src="@/assets/img/icon/twitter.png" width="20"
+            /></a>
+            <a href="javascript:;">
+              <img src="@/assets/img/icon/wechat.png" width="20" />
+              <img
+                class="qrcode"
+                src="@/assets/img/sidebar/weixin.jpg"
+                width="140"
+              />
+            </a>
+            <a
+              href="https://github.com/PolkaProject/PolkaProject-frontend"
+              target="_blank"
+              ><img src="@/assets/img/icon/github.png" width="20"
+            /></a>
+          </p>
+          <div class="dropdown language">
+            <a href="javascript:;" @click="isLangShow=!isLangShow" :class="{ open: isLangShow }">
+              <span>{{ $t("lang") }}</span
+              ><img src="@/assets/img/icon/downward_white.png" width="12" />
+            </a>
+            <ul class="dropdown-menu" v-show="isLangShow">
+              <li @click="switchLang('cn')">简体中文</li>
+              <li @click="switchLang('en')">English</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </article>
   </section>
@@ -117,6 +136,7 @@ export default {
       isSideShow: false, //侧边栏是否显示
       accountDropdownShow: false, //账号下拉框是否显示
       selectedTab: "Home",
+      isLangShow:false,
     };
   },
   created() {
@@ -136,7 +156,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setCategory", "logout","setScreenWidth"]),
+    ...mapActions(["setCategory", "logout", "setScreenWidth"]),
     toggleSidebar(n = 0) {
       if (window.innerWidth <= 768) {
         this.isMobile = true;
@@ -150,10 +170,15 @@ export default {
         this.isSideShow = true;
       }
     },
+    switchLang(lang) { //切换语言
+      this.$i18n.setUserLanguage(lang);
+      this.isLangShow = false
+      this.toggleSidebar();
+    },
     goRoute(item) {
       this.toggleSidebar();
       this.selectedTab = item;
-      if(this.$route.name!=item){
+      if (this.$route.name != item) {
         this.$router.push({ name: item });
       }
     },
@@ -161,8 +186,8 @@ export default {
     switchCategory(item) {
       this.setSelectedCategory(item);
       this.selectedTab = "Projects";
-      if(this.$route.fullPath!='/projects?cateID='+item.ID+'&tagID=0'){
-        this.$router.push('/projects?cateID='+item.ID+'&tagID=0')
+      if (this.$route.fullPath != "/projects?cateID=" + item.ID + "&tagID=0") {
+        this.$router.push("/projects?cateID=" + item.ID + "&tagID=0");
       }
       this.toggleSidebar();
     },
@@ -199,13 +224,13 @@ export default {
       this.accountDropdownShow = false;
     },
   },
-  watch:{
-    $route(to){
-      if(to.path!='/submit'){
-        this.selectedTab = to.name
+  watch: {
+    $route(to) {
+      if (to.path != "/submit") {
+        this.selectedTab = to.name;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -320,7 +345,10 @@ nav {
   display: inline-block;
 }
 .dropdown img {
-  margin:0 0 0 4px;
+  margin: 0 0 0 4px;
+}
+.language{
+  margin-bottom: 0;
 }
 .open img {
   transform: rotate(180deg);
@@ -340,17 +368,27 @@ nav {
   max-width: 204px;
   font: 700 16px/1.5 Rubik-Medium;
 }
-.foot-contact a{
+.language .dropdown-menu {
+  width: 110px;
+  left: auto;
+  bottom: 32px;
+}
+.language li{
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 0;
+}
+.foot-contact a {
   position: relative;
 }
-.foot-contact .qrcode{
+.foot-contact .qrcode {
   position: absolute;
   left: 0;
   bottom: 24px;
   display: none;
   opacity: 1;
 }
-.foot-contact a:hover .qrcode{
+.foot-contact a:hover .qrcode {
   display: block;
 }
 @media (max-width: 768px) {
@@ -383,8 +421,12 @@ nav {
     line-height: 20px;
     color: rgba(255, 255, 255, 0.7);
   }
-  .sidebar,.sidebar a {
+  .sidebar,
+  .sidebar a {
     color: rgba(255, 255, 255, 0.7);
+  }
+  .scroll-content li img{
+    opacity: 0.7;
   }
   .category-title {
     padding: 24px 16px 12px;
@@ -404,7 +446,7 @@ nav {
   .fixed-bottom {
     padding: 12px 16px 34px;
   }
-  .fixed-bottom a{
+  .fixed-bottom a {
     color: #fff;
   }
 }

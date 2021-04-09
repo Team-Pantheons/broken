@@ -9,9 +9,13 @@ LoginModal.install = function (Vue) {
   instance.$mount(document.createElement('div'))
   document.body.appendChild(instance.$el)
 
-  Vue.prototype.$loginModal = ( bool, accounts=[], callback ) => {
+  Vue.prototype.$loginModal = ( bool, accounts = [], el, callback ) => {
     instance.accounts = accounts;
     instance.loginModalShow = bool;
+    instance.$t = ( info ) => {
+     return el.$t(info)
+    };
+
     instance.selectAction = ( account ) => {
       if ( callback && typeof ( callback ) == 'function' ) {
         callback(account);

@@ -6,12 +6,12 @@
         <table>
           <thead>
             <tr>
-              <th>Underlying Tokens</th>
-              <th>Quantity per Set</th>
-              <th>Token Price</th>
-              <th>Current Price<br>Allocation</th>
-              <th>Percent Change</th>
-              <th>Total Price<br>per Set</th>
+              <th v-html="$t('UnderlyingTokens')"></th>
+              <th v-html="$t('QuantityPerSet')"></th>
+              <th v-html="$t('TokenPrice')"></th>
+              <th v-html="$t('CurrentPriceAllocation')"></th>
+              <th v-html="$t('PercentChange')"></th>
+              <th v-html="$t('TotalPricePerSet')"></th>
             </tr>
           </thead>
           <tbody>
@@ -30,8 +30,8 @@
           </tbody>
         </table>
       </article>
-      <h4 class="color-grey">About</h4>
-      <p class="about-info">The PolkaProject Index is a capitalization-weighted index that tracks the performance of decentralized financial assets across the market.</p>
+      <h4 class="color-grey">{{$t('About')}}</h4>
+      <p class="about-info">{{$t('IndexAboutInfo')}}</p>
     </main>
   </section>
 </template>
@@ -74,8 +74,11 @@ export default {
 </script>
 <style scoped>
 .table-responsive{
-  padding:0 24px;
+  padding: 0;
   margin:32px 0 var(--px48);
+}
+table{
+  padding:0 24px;
 }
 table span{
   font-size:14px;

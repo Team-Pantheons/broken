@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import i18n from "./assets/js/i18n";
 import user from "./assets/js/user";
 import axios from "axios";
 import lodash from "lodash"
@@ -86,10 +87,10 @@ Vue.mixin( {
     copyAction( val = window.location.href ) {
       this.$copyText( val ).then(
         () => {
-          this.$toast( "Successfully copied" );
+          this.$toast(this.$t('CopySuccess'));
         },
         () => {
-          this.$toast( "Copy failed" );
+          this.$toast(this.$t('CopyFail'));
         }
       );
     },
@@ -119,10 +120,11 @@ Vue.mixin( {
                 this.setAccount( accountList[0] );
                 resolve( accountList[0] );
               } else {
-                this.$toast( "Please switch to Polkadot wallet operation" );
+                this.$toast( this.$t('noAddress') );
               }
             } else {
-              this.$loginModal( true, accountList, ( account ) => {
+              // this.$loginModal( true, accountList, ( account ) => {
+              this.$loginModal( true, accountList, this , ( account ) => {
                 if ( account ) {
                   this.setAccount( account );
                 }
@@ -141,6 +143,7 @@ Vue.mixin( {
 
 new Vue( {
   router,
+  i18n,
   store,
   render: ( h ) => h( App ),
 } ).$mount( "#app" );

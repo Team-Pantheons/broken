@@ -416,6 +416,7 @@ header {
   padding: 24px 12px;
   color: var(--greyColor);
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .border-top {
@@ -506,7 +507,7 @@ table .flex-align-center img {
     padding: 16px 16px 34px 16px;
   }
   .hidden-xs {
-    display: none;
+    display: none!important;
   }
   h1 {
     font-size: 20px;
