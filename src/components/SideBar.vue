@@ -119,6 +119,7 @@
             <ul class="dropdown-menu" v-show="isLangShow">
               <li @click="switchLang('cn')">简体中文</li>
               <li @click="switchLang('en')">English</li>
+              <li @click="switchLang('ru')">Pусский</li>
             </ul>
           </div>
         </div>

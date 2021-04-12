@@ -6,16 +6,19 @@ Vue.use(vueI18n)
 /*
 设置一下网站支持的语言种类
   */
-var webLanguage = ['cn', 'en'];
+var webLanguage = ['cn', 'en', 'ru'];
 
 /**
  * 获取浏览器语言类型
  */
 var getNavLanguage = function() {
   var navLanguage = (navigator.browserLanguage || navigator.language).toLowerCase().slice(0,2);
-  switch (navLanguage) {
+  switch ( navLanguage ) {
     case 'zh':
       navLanguage = 'cn';
+      break;
+    case 'ru':
+      navLanguage = 'ru';
       break;
     default:
       navLanguage = 'en';
@@ -29,6 +32,7 @@ let i18n = new vueI18n({
   messages: {
     'cn': require('../lang/cn'),
     'en': require('../lang/en'),
+    'ru': require('../lang/ru'),
   }
 })
 
