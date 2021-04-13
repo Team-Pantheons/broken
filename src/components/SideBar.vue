@@ -89,7 +89,7 @@
           </a>
         </div>
 
-        <div class="foot-contact flex-between">
+        <div class="foot-contact flex-between-center">
           <p>
             <a href="https://t.me/polkaprojectcom" target="_blank"
               ><img src="@/assets/img/icon/telegram.png" width="20"
@@ -109,6 +109,11 @@
               href="https://github.com/PolkaProject/PolkaProject-frontend"
               target="_blank"
               ><img src="@/assets/img/icon/github.png" width="20"
+            /></a>
+            <a
+              href="https://polkaproject.medium.com/"
+              target="_blank"
+              ><img src="@/assets/img/icon/medium.png" width="20"
             /></a>
           </p>
           <div class="dropdown language">
@@ -350,6 +355,7 @@ nav {
 }
 .language{
   margin-bottom: 0;
+  font: 700 16px/1 Rubik-Medium;
 }
 .open img {
   transform: rotate(180deg);

@@ -7,7 +7,6 @@ import * as echarts from "echarts/core";
 import {
     GridComponent,
     GraphicComponent,
-    TitleComponent,
     TooltipComponent,
 } from 'echarts/components';
 import {
@@ -17,7 +16,7 @@ import {
     CanvasRenderer
 } from 'echarts/renderers';
 echarts.use(
-    [GraphicComponent,TitleComponent,GridComponent,TooltipComponent, LineChart, CanvasRenderer]
+    [GraphicComponent,GridComponent,TooltipComponent, LineChart, CanvasRenderer]
 );
 export default {
   props: ["timeList", "dataList"],
