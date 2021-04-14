@@ -72,5 +72,7 @@ module.exports = {
   CopyFail: "请手动复制",
   GetMore: "更多",
   Fold: "收起",
-
+  LatestProjects: "最新项目",
+  AuctionCrowdloan: "竞拍 & 众贷 ",
+  Join: "参与",
 };

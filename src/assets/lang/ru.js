@@ -70,4 +70,7 @@ module.exports = {
   SelectLoginAccount: "Пожалуйста, выберите кошелек, чтобы войти",
   CopySuccess: "Скопированоа успешно",
   CopyFail: "Ошибка при копировании",
+  LatestProjects: "Latest Projects",
+  AuctionCrowdloan: "Auction & Crowdloan",
+  Join: "Join",
 };

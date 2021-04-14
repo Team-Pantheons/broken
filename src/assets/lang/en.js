@@ -72,4 +72,7 @@ module.exports = {
   CopyFail: "Copy failed",
   GetMore: "Get More",
   Fold: "Fold",
+  LatestProjects: "Latest Projects",
+  AuctionCrowdloan: "Auction & Crowdloan",
+  Join: "Join",
 };
