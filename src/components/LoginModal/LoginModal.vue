@@ -89,7 +89,7 @@ export default {
 }
 
 .login-container h2 {
-  font: bold 24px/1.33 Rubik-Medium;
+  font: bold 24px/1.33 var(--familyMedium);
   margin-bottom: 8px;
   color: #000;
 }
@@ -107,7 +107,7 @@ export default {
   border-radius: 36px;
   margin-top: 16px;
   background: #000;
-  font: bold 16px/24px Rubik-Medium;
+  font: bold 16px/24px var(--familyMedium);
   padding: 12px 28px;
   color:#fff;
 }
@@ -121,7 +121,7 @@ export default {
   overflow: hidden;
 }
 .account-list h4 {
-  font: bold 16px/1.5 Rubik-Medium;
+  font: bold 16px/1.5 var(--familyMedium);
   color: #8a8a8f;
   padding: 32px 24px 0;
 }

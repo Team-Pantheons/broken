@@ -83,7 +83,7 @@ export default {
   padding: 0 40px;
 }
 .select-kline-type li {
-  font: bold 16px/1.5 Rubik-Medium;
+  font: bold 16px/1.5 var(--familyMedium);
   padding: 0;
 }
 .select-kline-type .active {

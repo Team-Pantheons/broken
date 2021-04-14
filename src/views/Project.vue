@@ -417,9 +417,10 @@ export default {
 /*详情页*/
 .project-detail{
   max-width: unset;
+  padding-bottom: 0;
 }
 .project-detail h2 {
-  font: bold 20px/24px Rubik-Medium;
+  font: bold 20px/24px var(--familyMedium);
   margin-bottom: 24px;
 }
 
@@ -439,6 +440,7 @@ export default {
 .project-detail main {
   margin: 0 auto;
   max-width: var(--maxWidth);
+  padding-bottom: 40px;
 }
 .float-left{
   max-width: 620px;
@@ -496,7 +498,7 @@ export default {
 }
 
 .detail-contact .website,.share-btn{
-  font: bold 16px/24px Rubik-Medium;
+  font: bold 16px/24px var(--familyMedium);
   cursor: pointer;
   display: inline-block;
   border: 1px solid var(--mainColor);
@@ -552,7 +554,7 @@ export default {
   color: #fff;
   background: var(--mainColor);
   text-align: center;
-  font: bold 16px/24px Rubik-Medium;
+  font: bold 16px/24px var(--familyMedium);
 }
 .subscribe-update {
   background: var(--paleGrey);
@@ -601,7 +603,7 @@ export default {
   margin-bottom: 5px;
 }
 .like-info p{
-  font:bold 14px/16px Rubik-Medium;
+  font:bold 14px/16px var(--familyMedium);
 }
 .like-info.active{
   background: #FFF5FA;
@@ -639,7 +641,7 @@ export default {
 }
 .dev-active h5{
   color: var(--greyColor);
-  font: bold 14px/16px Rubik-Medium;
+  font: bold 14px/16px var(--familyMedium);
   padding-bottom: 16px;
 }
 .dev-active ul{

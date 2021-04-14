@@ -88,6 +88,6 @@ table span{
 }
 .about-info{
   margin-top: 16px;
-  font:400 16px/1.25 Rubik-Regular;
+  font:400 16px/1.25 var(--familyRegular);
 }
 </style>

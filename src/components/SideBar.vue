@@ -256,7 +256,7 @@ nav {
   top: 0;
   height: 48px;
   padding: 12px 16px;
-  font: bold 16px/24px Rubik-Medium;
+  font: bold 16px/24px var(--familyMedium);
   background: var(--mainColor);
   z-index: 1100;
   display: none;
@@ -278,7 +278,7 @@ nav {
 }
 .scroll-content li {
   padding: 12px 24px;
-  font: bold 18px/24px Rubik-Medium;
+  font: bold 18px/24px var(--familyMedium);
   cursor: pointer;
 }
 .scroll-content li img {
@@ -289,7 +289,7 @@ nav {
   position: relative;
 }
 .category-title {
-  font: bold 14px/16px Rubik-Medium;
+  font: bold 14px/16px var(--familyMedium);
   padding: 36px 24px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   margin-top: 24px;
@@ -335,7 +335,7 @@ nav {
   display: inline-block;
 }
 .border-btn {
-  font: bold 16px/16px Rubik-Medium;
+  font: bold 16px/16px var(--familyMedium);
   color: #fff;
   border: 1px solid #fff;
   border-radius: 16px;
@@ -355,7 +355,7 @@ nav {
 }
 .language{
   margin-bottom: 0;
-  font: 700 16px/1 Rubik-Medium;
+  font: 700 16px/1 var(--familyMedium);
 }
 .open img {
   transform: rotate(180deg);
@@ -373,7 +373,7 @@ nav {
   z-index: 200;
   text-align: center;
   max-width: 204px;
-  font: 700 16px/1.5 Rubik-Medium;
+  font: 700 16px/1.5 var(--familyMedium);
 }
 .language .dropdown-menu {
   width: 110px;
@@ -439,6 +439,10 @@ nav {
     padding: 24px 16px 12px;
     border: none;
     position: relative;
+    color: #fff;
+  }
+  .category-title a{
+    color: #fff;
   }
   .tabs li {
     padding: 12px 16px;

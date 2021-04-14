@@ -41,13 +41,13 @@ export default {
       var option = {
         backgroundColor:"#fff",
         graphic: {
-          type: 'text',
-          left: 20,
-          bottom: 50,
+          left: 0,
+          bottom: 60,
+          type: 'image',
           style: {
-              text: 'PolkaProject',
-              fill:"rgba(0,0,0,0.08)",
-              font:"900 28px/1.5 Rubik-Medium",
+            image: require('../assets/img/icon/watermark.png'),
+            width:200,
+            opacity:0.4,
           }
         },
         color: this.mainColor,

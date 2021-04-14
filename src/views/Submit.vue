@@ -368,7 +368,7 @@ select {
   font-size: 16px;
   line-height: 1.5;
   font-weight: bold;
-  font-family: Rubik-Medium;
+  font-family: var(--familyMedium);
   padding-bottom: 15px;
   border-bottom: var(--border);
 }
@@ -406,7 +406,7 @@ select [disabled] {
 .basic-group .warn {
   color: red;
   font-weight: bold;
-  font-family: Rubik-Medium;
+  font-family: var(--familyMedium);
 }
 
 .basic-group span {
