@@ -448,7 +448,7 @@ th {
   padding: 16px 24px 16px 0;
   border-bottom: var(--border);
   color: var(--greyColor);
-  font: 400 12px/16px Rubik-Regular;
+  font: 400 12px/16px var(--familyRegular);
   white-space: nowrap;
 }
 
@@ -461,7 +461,7 @@ td {
   min-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
-  font: 400 16px/1.5 Rubik-Regular;
+  font: 400 16px/1.5 var(--familyRegular);
 }
 
 td:first-child {
@@ -469,7 +469,7 @@ td:first-child {
 }
 
 table h6 {
-  font: 400 12px/16px Rubik-Regular;
+  font: 400 12px/16px var(--familyRegular);
 }
 
 table td:last-child,
