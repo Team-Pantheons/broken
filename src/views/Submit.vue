@@ -387,7 +387,6 @@ select {
 
 select {
   color: #c8c7cc;
-  background: transparent;
   background: url(../assets/img/icon/downward.png)no-repeat 98% center/12px;
 }
 
