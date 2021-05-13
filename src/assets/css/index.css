@@ -566,7 +566,7 @@ table .flex-align-center img {
   }
   .dapp-list>li {
     padding: 12px 16px;
-    width: 100vw;
+    width: 100%;
   }
   .dapp-info>img {
     left: 16px;

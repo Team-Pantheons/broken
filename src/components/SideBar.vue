@@ -12,7 +12,11 @@
         />
       </div>
       <span>{{
-        selectedTab.includes("Project") ? (selectedCategory.title== "All" ? $t("All") :selectedCategory.title) : $t(selectedTab)
+        selectedTab.includes("Project")
+          ? selectedCategory.title == "All"
+            ? $t("All")
+            : selectedCategory.title
+          : $t(selectedTab)
       }}</span>
     </nav>
     <article class="sidebar" v-show="isSideShow">
@@ -34,6 +38,13 @@
           >
             <img src="@/assets/img/sidebar/Index.png" width="24" />
             <span>{{ $t("Index") }}</span>
+          </li>
+          <li
+            :class="{ active: selectedTab == 'Slot' && !isMobile }"
+            @click="goRoute('Slot')"
+          >
+            <img src="@/assets/img/sidebar/PLO.png" width="24" />
+            <span>{{$t('Slot')}}</span>
           </li>
           <li
             :class="{ active: selectedTab == 'Rank' && !isMobile }"
@@ -110,14 +121,16 @@
               target="_blank"
               ><img src="@/assets/img/icon/github.png" width="20"
             /></a>
-            <a
-              href="https://polkaproject.medium.com/"
-              target="_blank"
+            <a href="https://polkaproject.medium.com/" target="_blank"
               ><img src="@/assets/img/icon/medium.png" width="20"
             /></a>
           </p>
           <div class="dropdown language">
-            <a href="javascript:;" @click="isLangShow=!isLangShow" :class="{ open: isLangShow }">
+            <a
+              href="javascript:;"
+              @click="isLangShow = !isLangShow"
+              :class="{ open: isLangShow }"
+            >
               <span>{{ $t("lang") }}</span
               ><img src="@/assets/img/icon/downward_white.png" width="12" />
             </a>
@@ -142,7 +155,7 @@ export default {
       isSideShow: false, //侧边栏是否显示
       accountDropdownShow: false, //账号下拉框是否显示
       selectedTab: "Home",
-      isLangShow:false,
+      isLangShow: false,
     };
   },
   created() {
@@ -176,9 +189,10 @@ export default {
         this.isSideShow = true;
       }
     },
-    switchLang(lang) { //切换语言
+    switchLang(lang) {
+      //切换语言
       this.$i18n.setUserLanguage(lang);
-      this.isLangShow = false
+      this.isLangShow = false;
       this.toggleSidebar();
     },
     goRoute(item) {
@@ -353,7 +367,7 @@ nav {
 .dropdown img {
   margin: 0 0 0 4px;
 }
-.language{
+.language {
   margin-bottom: 0;
   font: 700 16px/1 var(--familyMedium);
 }
@@ -380,7 +394,7 @@ nav {
   left: auto;
   bottom: 32px;
 }
-.language li{
+.language li {
   cursor: pointer;
   user-select: none;
   padding: 4px 0;
@@ -432,7 +446,7 @@ nav {
   .sidebar a {
     color: rgba(255, 255, 255, 0.7);
   }
-  .scroll-content li img{
+  .scroll-content li img {
     opacity: 0.7;
   }
   .category-title {
@@ -441,7 +455,7 @@ nav {
     position: relative;
     color: #fff;
   }
-  .category-title a{
+  .category-title a {
     color: #fff;
   }
   .tabs li {

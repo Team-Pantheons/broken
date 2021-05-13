@@ -3,6 +3,7 @@ module.exports = {
   Home: "首页",
   Index: "指数",
   Rank: "排行榜",
+  Slot: "插槽",
   SubmitProject: "提交项目",
   All: "全部",
   Login: "登录",

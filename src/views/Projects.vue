@@ -119,10 +119,6 @@ export default {
     this.setDomLimit();
   },
   methods: {
-    getProjectContact(project) {
-      let c = this.contact.filter((v) => project[v]);
-      return c;
-    },
     goDetail(project) {
       if (!project) {
         return false;

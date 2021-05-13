@@ -83,6 +83,10 @@ Vue.mixin( {
       img.style.boxShadow = "none";
       img.onerror = null; //防止闪图
     },
+    getProjectContact(project) {
+      let c = this.contact.filter((v) => project[v]);
+      return c;
+    },
     // 复制
     copyAction( val = window.location.href ) {
       this.$copyText( val ).then(

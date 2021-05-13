@@ -3,6 +3,7 @@ module.exports = {
   Home: "Home",
   Index: "Index",
   Rank: "Rank",
+  Slot: "Slot",
   SubmitProject: "Submit Project",
   All: "All",
   Login: "Login",

@@ -30,6 +30,11 @@ const routes = [
     component: () => import('../views/Rank.vue')
   },
   {
+    path: '/slot',
+    name: 'Slot',
+    component: () => import('../views/Slot.vue')
+  },
+  {
     path: '/project/:id',
     name: 'Project',
     component: () => import( '../views/Project.vue' ),

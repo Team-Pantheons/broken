@@ -3,6 +3,7 @@ module.exports = {
   Home: "Главная",
   Index: "Индекс (PPI)",
   Rank: "Рейтинг",
+  Slot: "Slot",
   SubmitProject: "Добавить Проект",
   All: "Все",
   Login: "Войти",
