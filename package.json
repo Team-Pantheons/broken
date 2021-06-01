@@ -19,7 +19,7 @@
     "vue-clipboard2": "^0.3.1",
     "vue-i18n": "^8.22.0",
     "vue-router": "^3.2.0",
-    "vue-sparklines": "^0.2.1",
+    "vue-sparklines": "git+https://github.com/mytangying/vue-sparklines.git",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
