@@ -15,7 +15,7 @@ export default {
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: 'static/loading.json'
+        path: 'polkaproject/loading.json'
       }
     );
   }

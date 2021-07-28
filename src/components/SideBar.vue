@@ -408,6 +408,7 @@ nav {
   bottom: 24px;
   display: none;
   opacity: 1;
+  z-index: 202;
 }
 .foot-contact a:hover .qrcode {
   display: block;

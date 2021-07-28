@@ -1,13 +1,13 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
-  assetsDir: 'static',
+  publicPath: process.env.NODE_ENV === "production" ? "https://resource.staked.xyz/" : "/",
+  assetsDir: 'polkaproject',
   outputDir:'../boka-network/polkaproject',
   configureWebpack: {
     resolve: {
       // .mjs needed for https://github.com/graphql/graphql-js/issues/1272
       extensions: ["*", ".mjs", ".js", ".vue", ".json", ".gql", ".graphql"],
       alias: {
-        static: "public/static",
+        static: "public/polkaproject",
         vue$: "vue/dist/vue.esm.js",
       },
     },
