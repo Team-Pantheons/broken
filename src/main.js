@@ -87,6 +87,12 @@ Vue.mixin( {
       let c = this.contact.filter((v) => project[v]);
       return c;
     },
+    goDetail(project) {
+      if (!project) {
+        return false;
+      }
+      this.$router.push("/project/" + project.ID);
+    },
     // 复制
     copyAction( val = window.location.href ) {
       this.$copyText( val ).then(

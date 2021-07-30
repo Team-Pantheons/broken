@@ -119,12 +119,6 @@ export default {
     this.setDomLimit();
   },
   methods: {
-    goDetail(project) {
-      if (!project) {
-        return false;
-      }
-      this.$router.push("/project/" + project.ID);
-    },
     setDomLimit() {
       if (window.innerWidth <= 768) {
         //设置每次请求数量
