@@ -27,6 +27,7 @@ module.exports = {
   IndexAboutInfo: "PolkaProject 指数是一种资本化加权指数，可跟踪去中心化金融资产在整个市场中的表现。",
   Back: "返回",
   Voters: "点赞",
+  Voted: "收藏",
   event: "事件",
   VisitWebsite: "查看项目网站",
   Share: "分享",

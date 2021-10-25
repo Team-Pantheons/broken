@@ -90,14 +90,21 @@
             <span>{{ webUtil.formatStrByDot(account.address) }}</span>
             <img src="@/assets/img/icon/downward_white.png" width="16" />
           </a>
-          <a
-            href="javascript:;"
-            class="dropdown-menu"
-            v-show="accountDropdownShow"
-            @click="logoutAction"
-          >
-            {{ $t("Logout") }}
-          </a>
+          <ul class="dropdown-menu" v-show="accountDropdownShow">
+            <!-- <li
+              href="javascript:;"
+              @click="goRoute('Voted')"
+            >
+              {{ $t("Voted") }}
+            </li> -->
+            <li
+              href="javascript:;"
+              @click="logoutAction"
+            >
+              {{ $t("Logout") }}
+            </li>
+          </ul>
+
         </div>
 
         <div class="foot-contact flex-between-center">
@@ -197,6 +204,7 @@ export default {
     },
     goRoute(item) {
       this.toggleSidebar();
+      this.accountDropdownShow=false;
       this.selectedTab = item;
       if (this.$route.name != item) {
         this.$router.push({ name: item });
@@ -389,12 +397,13 @@ nav {
   max-width: 204px;
   font: 700 16px/1.5 var(--familyMedium);
 }
+
 .language .dropdown-menu {
   width: 110px;
   left: auto;
   bottom: 32px;
 }
-.language li {
+.dropdown-menu li {
   cursor: pointer;
   user-select: none;
   padding: 4px 0;

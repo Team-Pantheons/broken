@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "https://resource.staked.xyz/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "https://resource.staked.store/" : "/",
   assetsDir: 'polkaproject',
   outputDir:'../boka-network/polkaproject',
   configureWebpack: {

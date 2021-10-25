@@ -9,7 +9,7 @@
           (cenList && cenList.length > 0)
         "
       >
-        <h3 v-if="auctionList && auctionList.length > 0">Kusama Auction</h3>
+        <h3 v-if="auctionList && auctionList.length > 0">Auction</h3>
         <ul class="dapp-list" v-if="auctionList && auctionList.length > 0">
           <li
             class="dapp-info clearfix"
@@ -20,7 +20,7 @@
             <img
               v-if="project.img"
               :src="
-                'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+                'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
                 project.img
               "
             />
@@ -49,7 +49,7 @@
           </li>
         </ul>
         <h3 v-if="decList && decList.length > 0">
-          Kusama Crowdloan (Decentralized)
+          Crowdloan (Decentralized)
         </h3>
         <ul class="dapp-list" v-if="decList && decList.length > 0">
           <li
@@ -61,7 +61,7 @@
             <img
               v-if="project.img"
               :src="
-                'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+                'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
                 project.img
               "
             />
@@ -90,7 +90,7 @@
           </li>
         </ul>
         <h3 v-if="cenList && cenList.length > 0">
-          Kusama Crowdloan (Centralized)
+          Crowdloan (Centralized)
         </h3>
         <ul class="dapp-list" v-if="cenList && cenList.length > 0">
           <li
@@ -102,7 +102,7 @@
             <img
               v-if="project.img"
               :src="
-                'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+                'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
                 project.img
               "
             />

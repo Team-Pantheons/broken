@@ -8,7 +8,7 @@
             <img
               v-if="project.img"
               :src="
-                'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+                'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
                 project.img
               "
               width="96"
@@ -157,7 +157,7 @@
                 <img
                   v-if="project.parentChain.img"
                   :src="
-                    'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+                    'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
                     project.parentChain.img
                   "
                   width="32"
@@ -188,7 +188,7 @@
                 <img
                   v-if="item.img"
                   :src="
-                    'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+                    'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
                     item.img
                   "
                   width="32"

@@ -41,7 +41,7 @@
           <img
             v-if="project.img"
             :src="
-              'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/polka_project/' +
+              'https://oss-us-cdn.maiziqianbao.net/polka_project/' +
               project.img
             "
           />

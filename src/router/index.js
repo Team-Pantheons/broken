@@ -45,6 +45,11 @@ const routes = [
     name: 'Submit',
     component: () => import('../views/Submit.vue')
   },
+  {
+    path: '/voted',
+    name: 'Voted',
+    component: () => import('../views/Voted.vue')
+  },
 ]
 
 const router = new VueRouter({

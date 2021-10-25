@@ -19,7 +19,7 @@
       <textarea name="description" :placeholder="$t('DetailDescription')" v-model="description" ref="des" @input="textareaHeight" autocomplete="off"></textarea>
       <!-- logo -->
       <div class="list-name">Logo (Image Size: 288*288 px)</div>
-      <div class="upload-pic" id="fileContainer" :style="'backgroundImage:url('+ (img?'https://medishares-cn.oss-cn-hangzhou.aliyuncs.com/'+img:require('@/assets/img/icon/photo.png'))+')'">
+      <div class="upload-pic" id="fileContainer" :style="'backgroundImage:url('+ (img?'https://oss-us-cdn.maiziqianbao.net/'+img:require('@/assets/img/icon/photo.png'))+')'">
         <div id="file"></div>
         <input type="hidden" name="img" v-model="img">
       </div>
