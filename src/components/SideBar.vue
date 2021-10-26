@@ -91,12 +91,12 @@
             <img src="@/assets/img/icon/downward_white.png" width="16" />
           </a>
           <ul class="dropdown-menu" v-show="accountDropdownShow">
-            <!-- <li
+            <li
               href="javascript:;"
               @click="goRoute('Voted')"
             >
               {{ $t("Voted") }}
-            </li> -->
+            </li>
             <li
               href="javascript:;"
               @click="logoutAction"

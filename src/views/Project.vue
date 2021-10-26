@@ -387,7 +387,16 @@ export default {
       if(this.isLiked){
         return false;
       }
-      let signResult = await this.user.signMessage(account,this.message).catch(err=>{console.log(err)})
+      this.$loading(1);
+      let signResult = await this.user.signMessage(account,this.message).catch(err=>{
+        console.log(err)
+        this.$toast(err);
+        this.$loading(0);
+      })
+      if(!signResult){
+        this.$loading(0);
+        return false;
+      }
       const qs = require('qs');
       this.axios.post(this.domain+'polkaProjectLike',qs.stringify({
         address:account.address,
@@ -395,10 +404,15 @@ export default {
         message:this.message,
         projectID:this.id
       })).then(res=>{
+        this.$loading(0);
         if(res.data.success){
           this.getVoters();
+        }else{
+          this.$toast(res.data.message);
         }
       }).catch(err=>{
+        this.$loading(0);
+        this.$toast(err);
         console.log(err);
       })
     }

@@ -1,23 +1,18 @@
 <template>
-  <section>
-    <TokenList class="container"/>
+  <section class="container">
+    <h2 class="title">{{$t('Voted')}}</h2>
+    <table-project :isVoted="true"/>
   </section>
 </template>
 <script>
-import TokenList from "@/components/TokenList";
+import TableProject from '@/components/TableProject.vue';
 export default {
-  components: { TokenList },
-  created(){
-    if(!this.account){
-      this.$router.push('/')
-      return false;
-    }else{
-      this.getList()
-    }
-  },
-  methods:{
-    getList(){
-
+  components: { TableProject },
+  watch:{
+    account(){
+      if(!this.account){
+        this.$router.push('/');
+      }
     }
   }
 };
