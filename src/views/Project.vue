@@ -48,7 +48,7 @@
         <!-- 价格曲线 -->
         <div
           class="kline-part"
-          v-if="klineTimeList&&klineTimeList.length>0"
+          v-if="project.marketID>0"
         >
           <h2>
             <img
@@ -59,7 +59,7 @@
             />
             <span>{{ project.token.name }}</span>
           </h2>
-          <h2>
+          <h2 v-if="project.token.price>0">
             <span class="mr-6">${{ project.token.price }}</span>
             <label
               :class="[
@@ -69,8 +69,8 @@
               >{{ project.token.percentChange >0?('+'+project.token.percentChange):project.token.percentChange }}%</label
             >
           </h2>
-          <KlinePart :timeList="klineTimeList" :dataList="klinePriceList"/>
-          <ul class="select-kline-type">
+          <KlinePart :timeList="klineTimeList" :dataList="klinePriceList" v-if="klineTimeList&&klineTimeList.length>0"/>
+          <ul class="select-kline-type" v-if="klineTimeList&&klineTimeList.length>0">
             <li
               v-for="item in klineType"
               :key="item.name"
