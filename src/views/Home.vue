@@ -1,20 +1,64 @@
 <template>
   <section>
     <main class="container">
-      <IndexInfo isHome="1" class="card-border  mb-40"/>
-      <TokenList isHome="1" class="card-border"/>
+      <IndexInfo isHome="1" class="card-border mb-48" />
+      <a
+        href="https://collectify.app/"
+        class="adv"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div>
+          <img src="@/assets/img/adv/logo.svg" height="36" class="logo"/>
+          <p class="mt-12">The Essential Toolkit For NFT Creators, now support Moonbeam!</p>
+        </div>
+        <img src="@/assets/img/adv/link.png" height="20" class="link"/>
+      </a>
+      <TokenList isHome="1" class="card-border" />
     </main>
   </section>
 </template>
 
 <script>
-import IndexInfo from '@/components/IndexInfo'
-import TokenList from '@/components/TokenList'
+import IndexInfo from "@/components/IndexInfo";
+import TokenList from "@/components/TokenList";
 export default {
-  components:{IndexInfo,TokenList},
-}
+  components: { IndexInfo, TokenList },
+};
 </script>
 <style scoped>
+.adv {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: url(../assets/img/adv/bg.png) no-repeat center/cover;
+  margin-bottom: var(--px48);
+  color: #fff;
+  padding: 24px 24px 32px;
+  border-radius: 4px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+.mt-12 {
+  margin-top: 16px;
+}
+.mb-48 {
+  margin-bottom: var(--px48);
+}
+@media(max-width:768px){
+  .adv{
+    font-size: 16px;
+    line-height: 22px;
+    padding: 20px 16px 24px;
+  }
+  .adv .logo{
+    height: 24px;
+  }
+  .adv .link{
+    height: 16px;
+  }
+}
+/* 
 .banner{
   margin-bottom: 40px;
   flex-wrap: wrap;
@@ -43,16 +87,14 @@ export default {
 }
 .banner img{
   margin-left: 8px;
-}
-.mb-40{
-  margin-bottom: 40px;
-}
-@media(max-width: 996px) {
+} */
+
+/* @media(max-width: 996px) {
   .banner li{
     width: 100%;
   }
   .banner li:last-child{
     margin-top: 24px;
   }
-}
+} */
 </style>
