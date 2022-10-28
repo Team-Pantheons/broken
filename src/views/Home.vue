@@ -3,7 +3,7 @@
     <main class="container">
       <IndexInfo isHome="1" class="card-border mb-48" />
       <a
-        href="https://collectify.app/"
+        href="https://collectify.app?utm_source=polkaproject"
         class="adv"
         target="_blank"
         rel="noopener noreferrer"
