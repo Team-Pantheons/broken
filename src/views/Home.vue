@@ -9,10 +9,10 @@
         rel="noopener noreferrer"
       >
         <div>
-          <img src="@/assets/img/adv/logo.svg" height="36" class="logo"/>
-          <p class="mt-12">The Essential Toolkit For NFT Creators, now support Moonbeam!</p>
+          
+          <p class="mt-12">Broken enabling realworld business to initiates partnership by booking sessions, all-in-one application</p>
         </div>
-        <img src="@/assets/img/adv/link.png" height="20" class="link"/>
+       
       </a>
       <TokenList isHome="1" class="card-border" />
     </main>
