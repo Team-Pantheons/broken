@@ -47,7 +47,7 @@ export default {
 }
 @media(max-width:768px){
   .adv{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 22px;
     padding: 20px 16px 24px;
   }
