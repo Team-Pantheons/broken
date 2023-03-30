@@ -3,30 +3,30 @@
     <router-link to="/" class="form-nav"><img src="@/assets/img/icon/logo.png" height="30"></router-link>
     <form ref="form">
       <h4>{{$t('SubmitProject')}}</h4>
-      <div class="list-name" ref='title'> {{$t('Title')}} <span>*</span></div>
+      <div class="list-name" ref='title'> {{$t('Email')}} <span>*</span></div>
       <input type="text" name="title" :placeholder="$t('ProjectTitle')" v-model="title" autocomplete="off">
+      <div class="list-name" ref='title'> {{$t('First Name')}} <span>*</span></div>
+      <input type="text" name="title" :placeholder="$t('Your name')" v-model="title" autocomplete="off">
+      <div class="list-name" ref='title'> {{$t('Second Name')}} <span>*</span></div>
+      <input type="text" name="title" :placeholder="$t('Your surname')" v-model="title" autocomplete="off">
+      <div class="list-name" ref='title'> {{$t('  Project/Company name ')}} <span>*</span></div>
+      <input type="text" name="title" :placeholder="$t('(if applicable)')" v-model="title" autocomplete="off">
+
+      <div class="list-name" ref='title'> {{$t('Company, team, or project website ')}} <span>*</span></div>
+      <input type="text" name="title" :placeholder="$t('(if applicable?)')" v-model="title" autocomplete="off">
+      
       <div class="list-name" ref="category"> {{$t('Category')}} <span>*</span></div>
       <select :class="{selected:cateID}" name="cateID" v-model="cateID">
         <option value='' disabled selected> {{$t('SelectCategory')}}</option>
         <option v-for="item in category.slice(1)" :value="item.ID" :key="item.ID">{{item.title}}</option>
       </select>
-      <div class="list-name" ref="introduction">{{$t('ShortIntroduction')}} <span>*</span></div>
+      <div class="list-name" ref="introduction">{{$t('Message')}} <span>*</span></div>
       <div class="basic-group">
-        <textarea name="introduction" :placeholder="$t('ShortIntroductionLimit')" rows="4" v-model="introduction" @input="limitByteSize" autocomplete="off"></textarea>
+        <textarea name="introduction" :placeholder="$t('Briefly descript what partnership you want to create with the project?')" rows="4" v-model="introduction" @input="limitByteSize" autocomplete="off"></textarea>
         <span><i :class="{warn:shortByte>256}">{{shortByte}}</i>/256</span>
       </div>
-      <div class="list-name">{{$t('DetailDescription')}}</div>
-      <textarea name="description" :placeholder="$t('DetailDescription')" v-model="description" ref="des" @input="textareaHeight" autocomplete="off"></textarea>
-      <!-- logo -->
-      <div class="list-name">Logo (Image Size: 288*288 px)</div>
-      <div class="upload-pic" id="fileContainer" :style="'backgroundImage:url('+ (img?'https://oss-us-cdn.maiziqianbao.net/'+img:require('@/assets/img/icon/photo.png'))+')'">
-        <div id="file"></div>
-        <input type="hidden" name="img" v-model="img">
-      </div>
-      <div class="list-name">{{$t('Website')}}</div>
-      <input type="text" name="website" :placeholder="$t('Website')" v-model="website" autocomplete="off">
-      <div class="list-name">{{$t('Email')}}</div>
-      <input type="email" name="email" :placeholder="$t('Email')" v-model="email" autocomplete="off">
+     
+      
       <div class="list-name">Twitter</div>
       <input type="text" name="twitter" placeholder="Twitter" v-model="twitter" autocomplete="off">
       <div class="list-name">Telegram</div>
@@ -35,20 +35,8 @@
       <input type="text" name="element" placeholder="Element" v-model="element" autocomplete="off">
       <div class="list-name">Github</div>
       <input type="text" name="github" placeholder="Github" v-model="github" autocomplete="off">
-      <div class="list-name">Coinmarketcap</div>
-      <input type="text" name="coinmarketcap" placeholder="Coinmarketcap" v-model="coinmarketcap" autocomplete="off">
-      <div class="list-name">Coingecko</div>
-      <input type="text" name="coingecko" placeholder="Coingecko" v-model="coingecko" autocomplete="off">
-      <div class="list-name">Subsocial</div>
-      <input type="text" name="subsocial" placeholder="Subsocial" v-model="subsocial" autocomplete="off">
-      <div class="list-name">{{$t('PLOTokenAllocationPlan')}}</div>
-      <input type="text" name="PLOTokenAllocationPlan" :placeholder="$t('PLOTokenAllocationPlan')" v-model="PLOTokenAllocationPlan" autocomplete="off">
-      <div class="list-name" v-if="parentChainList&&parentChainList.length>0">{{$t('ParentChain')}}</div>
-      <select :class="{selected:parentChain}" name="pID" v-model="parentChain" v-if="parentChainList&&parentChainList.length>0">
-        <option value='0' selected>None</option>
-        <option v-for="item in parentChainList" :value="item.ID" :key="item.ID">{{item.title}}</option>
-      </select>
-      <!-- 提交申请 -->
+    
+      
       <a href="javascript:;" class="submit-btn" @click="submitProject">{{$t('Submit')}}</a>
     </form>
   </section>
@@ -63,7 +51,7 @@ export default {
       description: '',
       img: '',
       website: '',
-      email: '',
+      partnership: '',
       twitter: '',
       telegram: '',
       github: '',

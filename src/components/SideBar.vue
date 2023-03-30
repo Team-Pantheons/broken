@@ -21,7 +21,7 @@
     </nav>
     <article class="sidebar" v-show="isSideShow">
       <div class="logo hidden-xs">
-        <img src="@/assets/img/icon/logo.png" height="30" />
+        <img src="@/assets/img/icon/broken-log-01.jpeg" height="60" />
       </div>
       <div class="scroll-content">
         <ul class="tabs">

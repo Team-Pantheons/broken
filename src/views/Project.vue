@@ -124,9 +124,9 @@
           <p
             class="website"
             v-if="project.website"
-            @click.stop="openLink(project.website)"
+            @click.stop="openLink(project.sub)"
           >
-            {{$t("VisitWebsite")}}
+            {{$t("Initiate Partnership")}}
           </p>
           <ul>
             <li
@@ -227,10 +227,10 @@
           <h2>{{$t('SubscribeToUpdates')}}</h2>
           <div class="basic-group">
             <input
-              type="email"
-              name="EMAIL"
-              :placeholder="$t('YourEmail')"
-              class="email"
+              type="partnership"
+              name="partnership"
+              :placeholder="$t('Yourpartnership')"
+              class="partnership"
               autocomplete="off"
             />
             <input
@@ -553,7 +553,7 @@ export default {
   margin-top: 16px;
 } */
 
-.basic-group input.email {
+.basic-group input.partnership {
   border-radius: 24px;
   padding: 12px 130px 12px 24px;
 }
