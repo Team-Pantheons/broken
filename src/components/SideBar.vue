@@ -32,27 +32,7 @@
             <img src="@/assets/img/sidebar/Home.png" width="24" />
             <span>{{ $t("Home") }}</span>
           </li>
-          <li
-            :class="{ active: selectedTab == 'Index' && !isMobile }"
-            @click="goRoute('Index')"
-          >
-            <img src="@/assets/img/sidebar/Index.png" width="24" />
-            <span>{{ $t("Index") }}</span>
-          </li>
-          <li
-            :class="{ active: selectedTab == 'Slot' && !isMobile }"
-            @click="goRoute('Slot')"
-          >
-            <img src="@/assets/img/sidebar/PLO.png" width="24" />
-            <span>{{$t('Slot')}}</span>
-          </li>
-          <li
-            :class="{ active: selectedTab == 'Rank' && !isMobile }"
-            @click="goRoute('Rank')"
-          >
-            <img src="@/assets/img/sidebar/Rank.png" width="24" />
-            <span>{{ $t("Rank") }}</span>
-          </li>
+          
         </ul>
         <div class="flex-between category-title">
           <p>{{ $t("Project") }}</p>

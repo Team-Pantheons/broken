@@ -256,6 +256,7 @@
   </section>
 </template>
 <script>
+import { color } from 'echarts/core';
 import KlinePart from '../components/KlinePart.vue';
 export default {
   components: { KlinePart },
