@@ -124,9 +124,9 @@
           <p
             class="website"
             v-if="project.website"
-            @click.stop="openLink(project.sub)"
           >
-            {{$t("Initiate Partnership")}}
+          <router-link to="/submit" class="submit"> {{ $t("Initiate Partnership") }}</router-link>
+           
           </p>
           <ul>
             <li

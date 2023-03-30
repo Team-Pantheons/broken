@@ -57,8 +57,7 @@
         <div class="flex-between category-title">
           <p>{{ $t("Project") }}</p>
           <router-link to="/submit" class="submit"
-            >+ {{ $t("SubmitProject") }}</router-link
-          >
+            >+ {{ $t("SubmitProject") }}</router-link>
         </div>
         <ul class="blockchain">
           <li
