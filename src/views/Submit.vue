@@ -3,17 +3,17 @@
     <router-link to="/" class="form-nav"><img src="@/assets/img/icon/logo.png" height="30"></router-link>
     <form ref="form">
       <h4>{{$t('SubmitProject')}}</h4>
-      <div class="list-name" ref='title'> {{$t('Email')}} <span>*</span></div>
-      <input type="text" name="title" :placeholder="$t('ProjectTitle')" v-model="title" autocomplete="off">
-      <div class="list-name" ref='title'> {{$t('First Name')}} <span>*</span></div>
-      <input type="text" name="title" :placeholder="$t('Your name')" v-model="title" autocomplete="off">
-      <div class="list-name" ref='title'> {{$t('Second Name')}} <span>*</span></div>
-      <input type="text" name="title" :placeholder="$t('Your surname')" v-model="title" autocomplete="off">
-      <div class="list-name" ref='title'> {{$t('  Project/Company name ')}} <span>*</span></div>
-      <input type="text" name="title" :placeholder="$t('(if applicable)')" v-model="title" autocomplete="off">
+      <div class="list-name" ref='email'> {{$t('Email')}} <span>*</span></div>
+      <input type="text" name="projecttile" :placeholder="$t('ProjectTitle')" v-model="title" autocomplete="off">
+      <div class="list-name" ref='firstname'> {{$t('First Name')}} <span>*</span></div>
+      <input type="text" name="name" :placeholder="$t('Your name')" v-model="firstname" autocomplete="off">
+      <div class="list-name" ref='surname'> {{$t('Second Name')}} <span>*</span></div>
+      <input type="text" name="surname" :placeholder="$t('Your surname')" v-model="surname" autocomplete="off">
+      <div class="list-name" ref='projectname''> {{$t('  Project/Company name ')}} <span>*</span></div>
+      <input type="text" name="projectname" :placeholder="$t('(if applicable)')" v-model="projectname" autocomplete="off">
 
-      <div class="list-name" ref='title'> {{$t('Company, team, or project website ')}} <span>*</span></div>
-      <input type="text" name="title" :placeholder="$t('(if applicable?)')" v-model="title" autocomplete="off">
+      <div class="list-name" ref='companywebsite'> {{$t('Company, team, or project website ')}} <span>*</span></div>
+      <input type="text" name="companywebsite" :placeholder="$t('(if applicable?)')" v-model="companywebsite" autocomplete="off">
       
       <div class="list-name" ref="category"> {{$t('Category')}} <span>*</span></div>
       <select :class="{selected:cateID}" name="cateID" v-model="cateID">
