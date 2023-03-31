@@ -1,6 +1,6 @@
 <template>
   <section class="form-group" ref="form_group">
-    <router-link to="/" class="form-nav"><img src="@/assets/img/icon/logo.png" height="30"></router-link>
+    <router-link to="/" class="form-nav"><img src="@/assets/img/icon/broken-log-01.jpeg" height="40"></router-link>
     <form ref="form">
       <h4>{{$t('SubmitProject')}}</h4>
       <div class="list-name" ref='email'> {{$t('Email')}} <span>*</span></div>

@@ -22,7 +22,7 @@
 }
 
 :root {
-  --mainColor: #e6007a;
+  --mainColor: #000;
   --boxShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   --blueColor: #007aff;
   --upColor: #57be42;
